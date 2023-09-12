@@ -10,6 +10,7 @@ deactivate () {
     fi
     if [ -n "${_OLD_VIRTUAL_PYTHONHOME:-}" ] ; then
         PYTHONHOME="${_OLD_VIRTUAL_PYTHONHOME:-}"
+        # PYTHONHOME = "C:\Users\ronbr\AppData\Local\Programs\Python\Python310"
         export PYTHONHOME
         unset _OLD_VIRTUAL_PYTHONHOME
     fi
@@ -38,7 +39,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Bx\Documents\_Pool\Lernsituationen\LS-SmartHomeWeb\smarthomeweb\smarthomeweb_venv"
+VIRTUAL_ENV="C:\Hackerspace\Source\SmarthomeWeb\smarthomeweb_venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
