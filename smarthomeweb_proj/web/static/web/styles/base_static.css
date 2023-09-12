@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Slab:wght@700&display=swap');
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 10;
+    background-color: #e3ec62;
+    color: #9292e2;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Roboto Slab', sans-serif;
+    color: #9292e2;
+}
+
+
+button,
+.btn {
+    cursor: pointer;
+    font: inherit;
+    padding: 1.5rem 1.5rem  1.5rem  1.5rem;
+    background-color: #350490;
+    border: 1px solid #350490;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: auto 
+    
+}
+
+
+button:hover,
+.btn:hover {
+    background-color: #db6cea;
+    border-color: #350490;
+    
+}
+
+
+
+.willkommen {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    text-align: center;
+}
+
+.waehlen {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.temperaturen {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #350490;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+}
+
+.luftfeuchtigkeit {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #350490;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px ;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mqtt {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #350490;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.button {
+   text-align: center; 
+   
+}
+.beschreibung{
+   
+}
+
+.icon {
+    
+}
+
+
+@media only screen and (orientation: portrait) {
+    [class*="grid-container"] {
+        font-size: 12px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(5, 15vh);
+    }
+
+
+    [class*="willkommen"] {
+        grid-column-start: 1 !important;
+        grid-column-end: 2 !important;
+        grid-row-start: 1 !important;
+        grid-row-end: 2 !important;
+    }
+
+    [class*="waehlen"] {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        text-align: center;
+    }
+
+    [class*="temperaturen"] {
+        
+        grid-column-start: 1 !important;
+        grid-column-end: 2 !important;
+        grid-row-start: 3 !important;
+        grid-row-end: 4 !important;
+        
+    }
+
+
+    [class*="luftfeuchtigkeit"] {
+        
+        grid-column-start: 1 !important;
+        grid-column-end: 2 !important;
+        grid-row-start: 4 !important;
+        grid-row-end: 5 !important;
+    }
+
+    [class*="mqtt"] {
+       
+        grid-column-start: 1 !important;
+        grid-column-end: 2 !important;
+        grid-row-start: 5 !important;
+        grid-row-end: 6 !important;
+    }
+
+}

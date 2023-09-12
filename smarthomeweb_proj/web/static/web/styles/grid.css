@@ -1,0 +1,60 @@
+html{
+    font-size: 20px;
+}
+body{
+    background-color: #bcb8b8;
+    font-family: Calibri Light;
+    padding: 15px 30px;
+}
+div{
+    display: grid;
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+
+.menu{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	
+	grid-gap: 10px;
+}
+
+
+.menuitem{
+	background-color: teal;
+    opacity: 80%;
+}
+
+
+.grid-all{
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: 2fr 1fr 10fr 2fr;
+	grid-gap: 10px;
+}
+.example-1{
+    background-color: orange;
+    opacity: 80%;
+	grid-column: span 2;
+	
+}
+.example-2{
+    background-color: teal;
+    opacity: 80%;
+	grid-column: span 2;
+}
+.example-3{
+    background-color: darkred;
+    opacity: 80%;
+}
+.example-4{
+    background-color: cornflowerblue;
+    opacity: 80%;
+}
+.example-5{
+    background-color: darkslategray;
+    opacity: 80%;
+	grid-column: span 2;
+}

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About me</title>
+    
+    <link rel="stylesheet" href="../../static/web/styles/base.css">
+    <link rel="stylesheet" href="../../static/web/styles/smarthomestyles_static.css">
+    
+    <!--
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    -->
+</head>
+<body>
+    <header id="main-header">
+        <nav><a href="/about" id="main-logo">All abouts</a></nav>
+        <h1>Hier gibt es die neuen "Abouts"!</h1>
+        <p>Worüber möchtest du mehr wissen?</p>
+    </header>
+    <main>
+        <section>
+            <h2>Neuste Abouts</h2>
+            <ol>
+                {% for about_item in abouts %}
+                <li class="about-item">
+                    <article>
+                        <div class="about-summary">
+                            <div class="about-image">
+                                <img src="" alt="">
+                            </div>
+                            <div class="about-details">
+                                <h3>{{ about_item.title }}</h3>
+                                <date>
+                                    {{ about_item.date }}
+                                </date>
+                            </div>
+                        </div>
+                        <div class="about-actions" >
+                            <a href="" class="btn">More...</a>
+                        </div>
+                    </article>
+                    {{ about_item.title }}
+                </li>
+            {% endfor %}
+            </ol>
+        </section>
+    </main>
+</body>
+</html>

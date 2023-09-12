@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de-de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHomeWeb - Startseite</title>
+    <link rel="stylesheet" href="../../static/web/styles/main.css">
+    <link rel="stylesheet" href="../../static/web/styles/grid.css">
+</head>
+
+<body>
+    <div class="header">
+        <h2>Alle Smart-Home-Sensoren</h2>
+        <p>Ganz ohne Library kommt diese Startseite aus. Effektiv und einfach wird sie als zweidimensionales CSS-Grid
+            System umgesetzt. Und das ganz ohne das ist.
+        </p>
+        <p>Die zu Verfügung stehen. Allerdings wird auch da
+            "nur" CSS verwendet. Es macht also Sinn, sich das Thema CSS genauer anzuschauen.
+        </p>
+    </div>
+    <div class="sensors">
+        <h3>Aktive Sensoren:</h3>
+
+        {% for sensor in sensorlist %}
+        <div class="{{ sensor.sen_id }}">
+            {{ sensor.sen_id }},
+            {{sensor.sen_raum}},
+            {{sensor.sen_ip}}
+            <a href="editsensor/{{sensor.sen_id}}/">bearbeiten...</a>
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>
