@@ -27,10 +27,9 @@ def create_sensor(request):
         form = SensorCreateEditModelForm()
         return render(request, "web/sensor_edit.html", {"form": form})
     
-def tempdetails(request, temp_id):
-    print(temp_id + "tempdetails")
-    queryset = Sensor.objects.get(pk=temp_id)
-    return HttpResponse(f"""Tempdetails for Sensor-ID {temp_id}:
+def sensordetail(request, sensor_id):
+    queryset = Sensor.objects.get(pk=sensor_id)
+    return HttpResponse(f"""Tempdetails for Sensor-ID {sensor_id}:
                          {queryset.sen_raum}, 
                          {queryset.sen_ip},
                          {queryset.sen_code}""")
@@ -82,7 +81,7 @@ def display_temps(request):
                                             temperatur__lte = upperVal, temperatur__gte = lowerVal)
             
             
-            return render(request, "web/temps.html", {"name": "Berg", "tempslist": list(queryset), "form": form})
+            return render(request, "web/temps.html", {"page_name": "Temperatur", "tempslist": list(queryset), "form": form})
         else:
             return HttpResponse(f"Error! {form.errors}")
     else:
@@ -97,8 +96,36 @@ def display_temps(request):
 
 def show_press(request):
     if request.method == "POST":
-        pass
+        form = TempsFilterForm(request.POST) 
+
+        if form.is_valid():
+            lowerVal = form.cleaned_data["lowerVal"]
+            if lowerVal is None:
+                lowerVal = Werte.objects.aggregate(Min('luftdruck'))["luftdruck__min"]
+
+            upperVal = form.cleaned_data["upperVal"]
+            if upperVal is None:
+                upperVal = Werte.objects.aggregate(Max('luftdruck'))["luftdruck__max"]
+            
+            vonDate = form.cleaned_data["vonDate"]
+            bisDate = form.cleaned_data["bisDate"]
+
+            queryset = Werte.objects.filter(datum__gte=vonDate, datum__lte=(bisDate + timedelta(days=1)),
+                                            luftdruck__lte=upperVal, luftdruck__gte=lowerVal)
+            
+            return render(request, "web/pressure.html", {"page_name": "Luftdruck", "pressList": list(queryset), "form": form})
+            
     else:
+        form = TempsFilterForm()
         queryset = Werte.objects.all()
         pressList = list(queryset)
-        return render(request, "web/pressure.html", {"page_name": "Luftdruck", "form": "", "pressList": pressList})
+        return render(request, "web/pressure.html", {"page_name": "Luftdruck", "form": form, "pressList": pressList})
+    
+def show_humidity(request):
+    if request.method == "POST":
+        pass
+    else:
+        form = TempsFilterForm()
+        queryset = Werte.objects.all()
+        humidityList = list(queryset)
+        return render(request, "web/humidity.html", {"page_name": "Luftfeuchtigkeit", "form": form, "humidityList":humidityList })

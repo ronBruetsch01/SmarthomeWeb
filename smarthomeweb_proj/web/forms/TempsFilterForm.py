@@ -9,13 +9,12 @@ class TempsFilterForm(forms.Form):
                                          "aria-label": ".form-control-lg example"}),
         label="Bitte untere Grenze eingeben:",
         required=False,
-        max_value=60.0, min_value=-50.0, max_digits=3,
         decimal_places=1)
 
     upperVal = forms.DecimalField(
         label="Bitte obere Grenze eingeben:",
         widget=forms.NumberInput(attrs={"class": "form-control form-control-lg"}),
-        max_value=60.0, min_value=-50.0, max_digits=3, decimal_places=1,
+        decimal_places=1,
         required=False,
         #initial=23.0
         )

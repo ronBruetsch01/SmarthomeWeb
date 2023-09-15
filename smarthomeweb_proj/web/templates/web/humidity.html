@@ -1,0 +1,16 @@
+{% extends "web/baseView.html" %}
+{% block content %}
+    {% for hum in humidityList %}
+        <tr>
+            <td>{{ hum.id }}</td>
+            <td>{{ hum.luftfeuchte }}</td>
+            <td>{{hum.sensor.sen_raum}}</td>
+            <td>{{hum.datum}}</td>
+            <td>
+                <a href="{{hum.sensor.id}}/">
+                    Details
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}

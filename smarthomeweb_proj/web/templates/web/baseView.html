@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html lang="de-de">
-
-<head>
-    <meta charset="UTF-8">
-    <title>SmartHomeWeb - Startseite</title>
-    <!--
-    <link rel="stylesheet" href="../../static/web/styles/base.css">
-    <link rel="stylesheet" href="../../static/web/styles/smarthomestyles_static.css">
-    -->
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
-    <!--
-        https://getbootstrap.com/docs/5.3/getting-started/javascript/#data-attributes
-
-    -->
-</head>
-
-<body>
+{% extends "web/base.html" %}
+{% block main_content %}
     <div class="temperaturen">
         <h1>{{page_name}}</h1>
         <div class="mb-3">
@@ -39,6 +21,4 @@
             {% block content %}{% endblock %}
         </table>
     </div>
-</body>
-
-</html>
+{% endblock %}
