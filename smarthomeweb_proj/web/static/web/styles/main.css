@@ -1,5 +1,5 @@
 html{
-    font-size: 25px;
+    font-size: 16px;
 }
 body{
     background-color: #696868;
@@ -11,11 +11,11 @@ h1, h2, h3, h4 ,h5{
     font-weight: normal;
 }
 h1{
-    font-size: 4rem;
+    font-size: 2rem;
     margin: 20px 0;
 }
 h2{
-    font-size: 3rem;
+    font-size: 2.5ch;
     margin: 18px 0;
 }
 h3{

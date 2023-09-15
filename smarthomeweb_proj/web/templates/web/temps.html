@@ -32,10 +32,10 @@
             <li>
                 {{ temp.id }},
                 {{ temp.temperatur }},
-                {{temp.sen.sen_raum}},
+                {{temp.sensor.sen_raum}},
                 {{temp.datum}},
-                <a href="{{temp.sen.sen_id}}/">
-                    {{temp.sen}}
+                <a href="{{temp.sensor.id}}/">
+                    Details...
                 </a>
             </li>
             {% endfor %}

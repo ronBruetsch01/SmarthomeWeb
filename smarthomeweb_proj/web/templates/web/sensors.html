@@ -22,14 +22,17 @@
         <h3>Aktive Sensoren:</h3>
 
         {% for sensor in sensorlist %}
-        <div class="{{ sensor.sen_id }}">
-            {{ sensor.sen_id }},
+        <div >
+            {{ sensor.id }},
             {{sensor.sen_raum}},
             {{sensor.sen_ip}}
-            <a href="editsensor/{{sensor.sen_id}}/">bearbeiten...</a>
+            <a href="editsensor/{{sensor.id}}/">bearbeiten...</a>
         </div>
         {% endfor %}
 
+    </div>
+    <div>
+        <a href="sensor_new/">Neuen Sensor eintragen...</a>
     </div>
 </body>
 

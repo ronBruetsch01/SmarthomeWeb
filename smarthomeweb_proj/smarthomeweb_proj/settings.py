@@ -1,4 +1,5 @@
 """
+>createsuperuser
 superuser: bx, Q34Rna$f4re
 Django settings for smarthomeweb_proj project.
 
@@ -83,7 +84,7 @@ DATABASES = {
         'NAME': 'smarthome',# Name der DB mit den Werten.
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': ''
+        'PASSWORD': "l_N'TsAn6#:Am&V}\/^lz%2_$=N{+{D~*M"
     }
 }
 

@@ -2,14 +2,15 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Sensor, Werte
 from web.forms.TempsFilterForm import TempsFilterForm
-from web.forms.SensorEditModelForm import SensorEditModelForm
+# from web.forms.HumidsFilterForm import HumidsFilterForm
+from web.forms.SensorCreateEditModelForm import SensorCreateEditModelForm
 from django.db.models import Max, Min
 from datetime import datetime, timedelta
 
 
 def index(request):
     # return HttpResponse("Hello, world. You're at the web app.")
-    return render(request, 'web/index_a.html')
+    return render(request, 'web/index.html')
 
 
 def display_sensors(request):
@@ -20,7 +21,10 @@ def display_sensors(request):
 def tempdetails(request, temp_id):
     print(temp_id + "tempdetails")
     queryset = Sensor.objects.get(pk=temp_id)
-    return HttpResponse(f"Tempdetails for Sensor-ID {temp_id}: {queryset.sen_raum}, {queryset.sen_ip}")
+    return HttpResponse(f"""Tempdetails for Sensor-ID {temp_id}:
+                         {queryset.sen_raum}, 
+                         {queryset.sen_ip},
+                         {queryset.sen_code}""")
 
 
 def edit_sensor_details(request, sensor_id):
@@ -28,21 +32,14 @@ def edit_sensor_details(request, sensor_id):
 
     if request.method == "POST":
         print("GET")
-        form = SensorEditModelForm(request.POST, instance=sensor)
+        form = SensorCreateEditModelForm(request.POST, instance=sensor)
         if form.is_valid():
             form.save()
-            # return HttpResponse(f"""Sensor-Daten erfolgreich gespeichert.:
-            #                     sen_id = {form.cleaned_data["sen_id"]}
-            #                     sen_raum = {form.cleaned_data["sen_id"]}
-            #                     sen_ip = {form.cleaned_data["sen_ip"]}
-            #                     """)
             return redirect("/web/sensors/")
     else:
         print("GET")
-        
         print(sensor_id)
-        
-        form = SensorEditModelForm(instance=sensor)
+        form = SensorCreateEditModelForm(instance=sensor)
         print(sensor)
         return render(request, "web/sensor_edit.html", {"form": form})
 
@@ -84,5 +81,9 @@ def display_temps(request):
         form = TempsFilterForm()
         form.lowerVal = 4
         queryset = Werte.objects.all()
-        return render(request, "web/temps.html", {"form": form, "tempslist": list(queryset)})
+        tempListe = list(queryset)
+        #print(dict(queryset))
+        return render(request, "web/temps.html", {"form": form, "tempslist": tempListe})
+
+    
 
