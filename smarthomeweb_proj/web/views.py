@@ -12,12 +12,21 @@ def index(request):
     # return HttpResponse("Hello, world. You're at the web app.")
     return render(request, 'web/index.html')
 
-
 def display_sensors(request):
     queryset = Sensor.objects.all()
     return render(request, "web/sensors.html", {"sensorlist": list(queryset)})
 
-
+def create_sensor(request):
+    
+    if request.method == "POST":
+        form = SensorCreateEditModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/web/sensors")
+    else: 
+        form = SensorCreateEditModelForm()
+        return render(request, "web/sensor_edit.html", {"form": form})
+    
 def tempdetails(request, temp_id):
     print(temp_id + "tempdetails")
     queryset = Sensor.objects.get(pk=temp_id)
@@ -83,7 +92,13 @@ def display_temps(request):
         queryset = Werte.objects.all()
         tempListe = list(queryset)
         #print(dict(queryset))
-        return render(request, "web/temps.html", {"form": form, "tempslist": tempListe})
+        print (tempListe)
+        return render(request, "web/temps.html", {"page_name": "Temperatur", "form": form, "tempslist": tempListe})
 
-    
-
+def show_press(request):
+    if request.method == "POST":
+        pass
+    else:
+        queryset = Werte.objects.all()
+        pressList = list(queryset)
+        return render(request, "web/pressure.html", {"page_name": "Luftdruck", "form": "", "pressList": pressList})
