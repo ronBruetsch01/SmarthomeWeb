@@ -5,8 +5,21 @@ from web.forms.TempsFilterForm import TempsFilterForm
 # from web.forms.HumidsFilterForm import HumidsFilterForm
 from web.forms.SensorCreateEditModelForm import SensorCreateEditModelForm
 from django.db.models import Max, Min
+from django.contrib.auth import authenticate
 from datetime import datetime, timedelta
 
+def login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(request, username=username, password=password)
+        if user is None:
+            return render(request, "web/login.html")
+        else:
+            return redirect(index)
+    else:
+        return render(request, 'web/login.html')
 
 def index(request):
     # return HttpResponse("Hello, world. You're at the web app.")
@@ -29,10 +42,8 @@ def create_sensor(request):
     
 def sensordetail(request, sensor_id):
     queryset = Sensor.objects.get(pk=sensor_id)
-    return HttpResponse(f"""Tempdetails for Sensor-ID {sensor_id}:
-                         {queryset.sen_raum}, 
-                         {queryset.sen_ip},
-                         {queryset.sen_code}""")
+    print(queryset.sen_raum)
+    return render(request, "web/sensorDetails.html", {"data": {"sensorId": sensor_id, "sensor": queryset}})
 
 
 def edit_sensor_details(request, sensor_id):

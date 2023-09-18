@@ -1,0 +1,18 @@
+{% extends "web/base.html" %}
+{% block main_content %}
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Raum</th>
+            <th>IP</th>
+            <th>Code</th>
+        </tr>
+        <tr>
+            <td>{{data.sensorId}}</td>
+            <td>{{data.sensor.sen_raum}}</td>
+            <td>{{data.sensor.sen_ip}}</td>
+            <td>{{data.sensor.sen_code}}</td>
+        </tr>
+    </table>
+{% endblock %}

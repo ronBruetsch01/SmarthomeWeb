@@ -1,39 +1,41 @@
-<!DOCTYPE html>
-<html lang="de-de">
+{% extends "web/base.html" %}
+{% block main_content %}
+<div class="header">
+    <h2>Alle Smart-Home-Sensoren</h2>
+    <p>Ganz ohne Library kommt diese Startseite aus. Effektiv und einfach wird sie als zweidimensionales CSS-Grid
+        System umgesetzt. Und das ganz ohne das ist.
+    </p>
+    <p>Die zu Verfügung stehen. Allerdings wird auch da
+        "nur" CSS verwendet. Es macht also Sinn, sich das Thema CSS genauer anzuschauen.
+    </p>
+</div>
+<div class="sensors">
+    <h3>Aktive Sensoren:</h3>
 
-<head>
-    <meta charset="UTF-8">
-    <title>SmartHomeWeb - Startseite</title>
-    <link rel="stylesheet" href="../../static/web/styles/main.css">
-    <link rel="stylesheet" href="../../static/web/styles/grid.css">
-</head>
-
-<body>
-    <div class="header">
-        <h2>Alle Smart-Home-Sensoren</h2>
-        <p>Ganz ohne Library kommt diese Startseite aus. Effektiv und einfach wird sie als zweidimensionales CSS-Grid
-            System umgesetzt. Und das ganz ohne das ist.
-        </p>
-        <p>Die zu Verfügung stehen. Allerdings wird auch da
-            "nur" CSS verwendet. Es macht also Sinn, sich das Thema CSS genauer anzuschauen.
-        </p>
-    </div>
-    <div class="sensors">
-        <h3>Aktive Sensoren:</h3>
-
+    
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Raum</th>
+            <th>IP</th>
+            <th></th>
+        </tr>
         {% for sensor in sensorlist %}
-        <div >
-            {{ sensor.id }},
-            {{sensor.sen_raum}},
-            {{sensor.sen_ip}}
-            <a href="editsensor/{{sensor.id}}/">bearbeiten...</a>
-        </div>
+        <tr >
+            <td>{{ sensor.id }}</td>
+            <td>{{sensor.sen_raum}}</td>
+            <td>{{sensor.sen_ip}}</td>
+            <td>
+            <a href="editsensor/{{sensor.id}}/" class="btn btn-outline-dark">bearbeiten...</a>
+            </td>
+        </tr>
+
         {% endfor %}
+    </table>
 
-    </div>
-    <div>
-        <a href="sensor_new/">Neuen Sensor eintragen...</a>
-    </div>
-</body>
+</div>
+<div>
+    <a href="sensor_new/" class="btn btn-primary">Neuen Sensor eintragen...</a>
+</div>
 
-</html>
+{% endblock %}
